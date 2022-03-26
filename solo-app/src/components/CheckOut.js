@@ -14,9 +14,12 @@ export default function Checkout() {
 
   const [state, setState] = useState({
     submitState: "",
-    username: "",
+    capacity:1,
     coupon: "OCA2022",
     copVal: 0,
+    "user_id": loggedUser.id,
+    "trip_id": orders[0].id,
+    "price": orders[0].price
   });
   const Navigate = useNavigate();
   useEffect(() => {
@@ -31,7 +34,7 @@ export default function Checkout() {
   const submitted = (e) => {
     e.preventDefault();
     // setState({ submitState: "submitted" });
-    axios.post('http://localhost:8000/api/insertReservation',orders).then((response)=>{
+    axios.post('http://localhost:8000/api/insertReservation',state).then((response)=>{
       console.log(response.data);
     })
     Navigate("/placedOrder");
@@ -56,8 +59,11 @@ export default function Checkout() {
       localStorage.removeItem("bookItem");
   };
   const validation = (e) => {
-    setState({ ...state, username: e.target.value });
+    const name = e.target.name;
+    const value = e.target.value;
+    setState({ ...state,[name]: value });
   };
+  console.log(state);
   let data = [];
   data = localStorage.getItem("bookItem")?JSON.parse(localStorage.getItem("bookItem")):[];
   let total = () => {
@@ -70,9 +76,9 @@ export default function Checkout() {
   let values = data.map((item, index) => (
     <span className="billProducts" key={index}>
       <span>
-       {item.name}
+       {item.name} x {state.capacity}
       </span>
-      <span>{item.price}Jd</span>
+      <span>{item.price * state.capacity}Jd</span>
     </span>
   ));
   let couponHandler = (e) => {
@@ -91,17 +97,37 @@ export default function Checkout() {
               <div>
                 <span>Personal Information:</span>
                 <input
-                  onChange={(e) => validation(e)}
-                  value={state.username}
+                  onChange={ validation}
                   type="text"
                   placeholder="User Name"
                   className="formInputs userName"
+                  name='username'
                   required
                 ></input>
                 <input
                   type="email"
+                  onChange={validation}
                   placeholder="Email"
+                  name='email'
                   className="formInputs email"
+                  required
+                ></input>
+                 <input
+                  type="number"
+                  placeholder="NUMBER OF PASSENGERS"
+                  onChange={validation}
+                  className="formInputs number"
+                  name='capacity'
+                  min='1'
+                  max={orders[0].capacity}
+                  required
+                ></input>
+                <input
+                  type="text"
+                  onChange={validation}
+                  placeholder="Phone Number"
+                  name='phone'
+                  className="formInputs phone"
                   required
                 ></input>
               </div>
@@ -109,18 +135,24 @@ export default function Checkout() {
                 <span>Address Information:</span>
                 <input
                   type="text"
+                  onChange={validation}
                   placeholder="Country"
                   className="formInputs address"
+                  name='address1'
                   required
                 ></input>
                 <input
                   type="text"
                   placeholder="City"
+                  name='city'
+                  onChange={validation}
                   className="formInputs address"
                   required
                 ></input>
                 <input
                   type="text"
+                  onChange={validation}
+                  name='address2'
                   placeholder="Address 2 / optional"
                   className="formInputs address"
                 ></input>
@@ -141,10 +173,10 @@ export default function Checkout() {
                 </div>
                 <br />
                 <button
-                  value="Place your order"
+                  value="Book"
                   // className="formInputs checkSubmit"
                 >
-                  Place your order
+                  Confirm Booking
                 </button>
               </div>
             </div>
@@ -155,25 +187,26 @@ export default function Checkout() {
                 className="formInputs address"
                 placeholder="Coupon"
                 onChange={couponHandler}
+                name='coupon'
               ></input>
               <div className="billCard">
-                <h3 className="billTitle">Your Order</h3>
-                <span className="products"> {values} </span>
+                <h3 className="billTitle">Your Trip</h3>
+                <span className="products"> {values}   </span>
                 <hr />
                 <span className="totalTaxes">
-                  Purchase
+                  Purchase per person
                   <span>{data[0].price} Jd</span>
                 </span>
                 <span className="totalTaxes totalTaxes1">
                   Discount
-                  <span> {-data[0].price* state.copVal } Jd</span>
+                  <span> {-data[0].price* state.copVal* state.capacity} Jd</span>
                 </span>
                 <hr />
                 <div className="totalSection">
                   <span>Total: </span>
                   <span className="totalPrice">
                     {Math.round(
-                      Number(data[0].price-data[0].price* state.copVal)
+                      Number(data[0].price* state.capacity-data[0].price* state.copVal*state.capacity)
                     )}{" "}
                     Jd
                   </span>

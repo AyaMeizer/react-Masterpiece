@@ -3,6 +3,7 @@
   grid-template-columns: auto 1fr 0.2fr;
   grid-template-rows: auto auto;
   min-height: 50vh;
+  overflow: hidden;
 }
 .shopCont {
   background-image: url(https://wallpaperaccess.com/full/2040050.jpg);
@@ -88,7 +89,7 @@
 }
 .itemImg {
   height: 10em;
-  /* width: 70%; */
+  width: 100%;
   box-sizing: border-box;
 
 }

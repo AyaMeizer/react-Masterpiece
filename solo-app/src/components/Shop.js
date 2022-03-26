@@ -100,6 +100,7 @@ function Shop() {
   };
   let products = shop ? (
     shop.map((item, key) => (
+      item.capacity?
       <Link to={"/singlepage/" + item.id}>
         <div className="itemCont" key={key}>
           <img className="itemImg" src={item.image} />
@@ -120,8 +121,8 @@ function Shop() {
           </button>
         </div>
       </Link>
-    ))
-  ) : (
+      :""))
+      ) : (
     <Box sx={{ display: "flex" }}>
       <CircularProgress />
     </Box>
