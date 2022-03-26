@@ -1,0 +1,52 @@
+.feaTitle{
+    border-bottom: gold solid;
+    display: flex;
+    padding: 0.5em 0;
+    width: fit-content;
+    margin: 1em auto;
+}
+.featuredCont{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+.featuredItem{
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.164);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(202, 202, 202, 0.445);
+    color: goldenrod;
+    padding: 1em;
+}
+.featuredImg{
+    width: 20em;
+    height: 70%;
+}
+.salesImg{
+    margin: 3em auto;
+    background-image: url("https://media.cntraveller.com/photos/611bf6eb4e09f53b437337da/16:9/w_1024%2Cc_limit/gettyimages-933101284.jpg");
+    height: 25em;
+    width: 80%;
+    background-size: contain;
+    background-position: center;
+    background-attachment: fixed;
+    border-radius: 1em;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.938);
+}
+.salesOverlay{
+    margin: 0 auto;
+    height: 25em;
+    background: rgba(43, 36, 36, 0.247);  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.salesTitle{
+    color: whitesmoke;
+    font-size: 2em;
+    text-align: center;
+}

@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap");
+
+.Nav.NavCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: solid rgb(216, 216, 216) 0.1px;
+  box-shadow: gray 1px 1px 8px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
+}
+.Nav.brand {
+  margin-left: 3em;
+
+}
+.Nav.brand p {
+  text-align: center;
+  margin: 3px;
+}
+.Nav.logoCont {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0em;
+  cursor: pointer;
+}
+.Nav.logoName {
+  display: inline;
+  font-size: 16px;
+  letter-spacing: 0.5em;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+.Nav.middleList {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Kanit", sans-serif;
+  cursor: pointer;
+  margin-right: 5em;
+}
+.middleList li:hover {
+  text-decoration: underline;
+  color: var(--p-gold);
+  text-shadow: var(--s-xl-light);
+  font-weight: bold;
+  transform: translateY(-3%);
+  transform: scale(1.1);
+  transition-duration: 2ms;
+}
+#Btn {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .Nav.NavCont {
+    display: flex;
+    text-align: center;
+  }
+  .Nav.logoCont {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  .Nav.middleList {
+    display: none;
+    text-align: center;
+    width: auto;
+    margin: 0;
+  }
+  .toggle.NavCont {
+    background: white;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 1px 1px 8px black;
+    padding: 1em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .toggle.logoCont {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    align-content: center;
+  }
+  .toggle.middleList {
+    display: block;
+    text-align: center;
+    width: auto;
+    line-height: 2.5em;
+    margin: 0;
+  }
+
+  #Btn {
+    display: inline;
+    margin-right: 2em;
+  }
+}
+@media screen and (min-width: 900px) {
+  .toggle.NavCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: solid rgb(216, 216, 216) 0.1px;
+    box-shadow: grey 1px 1px 8px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+  }
+  .toggle.logoCont {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0em;
+    cursor: pointer;
+  }
+  .toggle.middleList {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Kanit", sans-serif;
+    cursor: pointer;
+    margin-right: 5em;
+  }
+}
