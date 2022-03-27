@@ -7,7 +7,40 @@ import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { Slider } from "@mui/material";
+//import  {makeStyles}  from '@material-ui/core/styles';
 
+
+// const useStyles = makeStyles(() => ({
+//   inputRoot: {
+//     width: '150px',
+//     marginTop: '0'
+//   },
+
+//   label: {
+//     justifyContent: 'space-between',
+//     width: '100%'
+//   },
+//   paper: { borderRadius: 25 },
+//   thumb: {
+//     color: 'white',
+//     border: '2px solid gray',
+//     height: 24,
+//     width: 24,
+//     '&:focus, &:hover, &$active': {
+//       boxShadow: 'inherit'
+//     }
+//   },
+//   track: {
+//     color: '#3EDDB8',
+//     height: '14px',
+//     borderRadius: 6
+//   },
+//   rail: {
+//     color: 'gray',
+//     height: '14px',
+//     borderRadius: 6
+//   }
+// }));
 function Shop() {
   const [shop, setShop] = useState();
   const [countries, setCountries] = useState();
@@ -186,7 +219,7 @@ function Shop() {
         </div>
       </div>
       <div className="items">{products}</div>
-      <div>
+      <div style={{marginRight:'2em'}}>
         <h2 style={{textAlign:'center'}}>Price Filter</h2>
         <Slider
           aria-label="price"

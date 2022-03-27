@@ -40,7 +40,7 @@ export default function Checkout() {
     Navigate("/placedOrder");
     console.log(orders);
 
-
+    localStorage.setItem('reservation',JSON.stringify(state))
     // ${loggedUser.id}
 
 

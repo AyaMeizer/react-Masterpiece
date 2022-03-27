@@ -72,11 +72,6 @@ function Nav() {
               Trips
             </li>
           </Link>
-          <Link to={"/cart"}>
-            <li onClick={show} className="listItem">
-              Reservations
-            </li>
-          </Link>
           
          { isLoggedIn.isAdmin?<a onClick={laravel}>
             <li className="listItem">
